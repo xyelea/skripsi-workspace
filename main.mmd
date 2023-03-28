@@ -1,9 +1,35 @@
-  %%{init: {'theme':'neutral'}}%%
-  %%{config: {'arrowMarkerAbsolute': false}}%%
-  graph TD
-    A[User] --> B[Sistem e-learning berbasis website]
-    B --> C[Mux API]
-    B --> D[State based code editor]
-    B --> E[Q&A API with OpenAI]
-    B --> F[Database]
+  %%{init: {'theme': 'default'} }%%
+  %%{init: {'useCaseDiagram': true} }%%
+graph LR
+  actor user as Pengguna
+  boundary elearning {
+    control elearning-admin as Admin
+    usecase Login
+    usecase Melihat Video Course
+    usecase Mengakses Kode Editor
+    usecase Menggunakan Fitur State
+    usecase Mencari Course
+    usecase Menambahkan Course ke Favorit
+    usecase Melihat Progress Belajar
+    usecase Membagikan Video Course
+    usecase Enroll Course
+    usecase Q&A
+    usecase Mengajukan Pertanyaan
+    usecase Melihat Daftar Pertanyaan
+    usecase Mendapatkan Jawaban Otomatis
+  }
 
+  user --> Login
+  Login --> elearning
+  user --> Melihat Video Course
+  user --> Mengakses Kode Editor
+  Mengakses Kode Editor --> Menggunakan Fitur State
+  user --> Mencari Course
+  user --> Menambahkan Course ke Favorit
+  user --> Melihat Progress Belajar
+  user --> Membagikan Video Course
+  user --> Enroll Course
+  user --> Q&A
+  Mengajukan Pertanyaan --> Q&A
+  Melihat Daftar Pertanyaan --> Q&A
+  Mendapatkan Jawaban Otomatis --> Q&A
